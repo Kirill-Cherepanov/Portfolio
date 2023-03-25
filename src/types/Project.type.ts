@@ -6,6 +6,7 @@ export type ProjectType = {
     deploy: string;
     repo: string;
   };
+  demo: { mobile: string; desktop: string };
   description: string[];
-  essay: string;
+  essay?: JSX.Element;
 };
