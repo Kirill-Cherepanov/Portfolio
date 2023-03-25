@@ -5,14 +5,8 @@ import { GroupProps, useFrame } from '@react-three/fiber';
 
 import typeFace from '@/assets/fonts/Roboto_Regular.json';
 
-const backgroundImage = new URL(
-  '../../assets/images/background.jpg',
-  import.meta.url
-).toString();
-
-const backgroundTexture = new THREE.TextureLoader().load(backgroundImage);
-
 interface TextProps extends GroupProps {
+  backgroundTexture?: THREE.Texture;
   children?: React.ReactNode;
   size?: number;
   color?: THREE.ColorRepresentation;
@@ -38,11 +32,12 @@ export function Text({
   size = 1.5,
   color = 0xffffff,
   isControlled = false,
+  backgroundTexture,
   ...props
 }: TextProps) {
-  const meshRef = useRef<
-    THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>
-  >(null!);
+  const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>(
+    null!
+  );
   const groupRef = useRef<THREE.Group>(null!);
 
   const shouldRotate = useRef(!isControlled);
