@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --open",
     "start": "yarn dev",
-    "build": "tsc && vite build",
+    "build": "yarn install && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
