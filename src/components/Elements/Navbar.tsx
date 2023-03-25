@@ -20,7 +20,7 @@ export function Navbar() {
   const { isOpen, close, toggle } = useDisclosure();
   const drawerRef = useOnClickOutside<HTMLDivElement>(close);
   const isScreenMd = useMinWidthMediaQuery('md');
-  const scrollDirection = useScrollDirection();
+  const scrollDirection = useScrollDirection((dir) => dir > 0 && close());
 
   const [isOnTop, setIsOnTop] = useState(true);
   useEffect(() => {
@@ -32,8 +32,8 @@ export function Navbar() {
   return (
     <nav
       className={clsx(
-        'fixed top-0 left-0 right-0 z-[999999999] transition-all duration-300',
-        scrollDirection < 0 || isOnTop ? 'translate-y-0' : '-translate-y-full',
+        'fixed left-0 right-0 z-[999999999] transition-all duration-300',
+        scrollDirection < 0 || isOnTop ? 'top-0' : '-top-full',
         isOnTop || 'bg-main-reverse-0 dark:bg-main-0'
       )}
     >
@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="main-layout flex justify-between items-center py-6 text-lg uppercase font-semibold tracking-widest">
           <div className="grow">
             <HashLink smooth to="/#top">
-              <Logo className="h-14" />
+              <Logo className="h-14 text-default transition-color duration-300" />
             </HashLink>
           </div>
           <NavigationLinks
@@ -61,7 +61,7 @@ export function Navbar() {
         >
           <div
             className={clsx(
-              'w-full xs:w-80 h-screen absolute top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-all duration-300 bg-default text-default',
+              'w-full xs:w-80 h-screen fixed top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-all duration-300 bg-default text-default',
               isOpen ? '-translate-x-full' : 'translate-x-0'
             )}
           >
@@ -87,7 +87,7 @@ export function Navbar() {
             </div>
           </div>
           <HashLink smooth to="/#top" className="relative">
-            <Logo className="h-12 xs:h-14" />
+            <Logo className="h-12 xs:h-14 text-default transition-color duration-300" />
           </HashLink>
           <HamburgerButton isOpen={isOpen} onClick={toggle} size={1.12} />
         </div>

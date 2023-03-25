@@ -8,7 +8,7 @@ export function AboutMe() {
       {/* Initially I wanted to have the height of this component to be 90vh. But this makes projects section below very ustable */}
       {/* It seems to doesn't like viewheights of anything other than 100vh. WHY??? */}
       <div className="w-full px-6 2xs:px-8 lg:px-0 relative lg:h-screen rounded-3xl lg:rounded-none flex flex-col bg-main-reverse-1 dark:bg-main-1 text-default transition-colors duration-300 lg:bg-transparent lg:dark:bg-transparent">
-        <div className="max-h-[calc(100vh_-_400px)] lg:max-h-max lg:h-full lg:ml-[500px] lg:z-10 pt-8 pb-4 relative flex flex-col gap-4">
+        <div className="max-h-[calc(100vh_-_400px)] min-h-[400px] lg:max-h-max lg:h-full lg:ml-[500px] lg:z-10 pt-8 pb-4 relative flex flex-col gap-4">
           <h2 className="shrink-0 text-4xl 2xs:text-5xl sm:text-6xl uppercase font-righteous text-center lg:text-left">
             About me
           </h2>

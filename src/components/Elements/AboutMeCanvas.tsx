@@ -33,7 +33,7 @@ export function AboutMeCanvas() {
     return () => {
       shouldStop = true;
     };
-  }, [isScreenLg]);
+  }, [isScreenLg, theme]);
 
   return (
     <Canvas shadows>

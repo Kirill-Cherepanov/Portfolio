@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import clsx from 'clsx';
 
@@ -21,14 +21,12 @@ export function ProjectPage() {
   const { isOpen: isTextOpen, open: openText } = useDisclosure(false);
   const navigate = useNavigate();
 
-  const page = 'Bloggy';
-
-  const project = projects.find((project) => project.name.toLowerCase() === page.toLowerCase());
-
+  const { name: page } = useParams();
+  const project = projects.find((project) => project.name.toLowerCase() === page?.toLowerCase());
   if (!project) return null;
 
   return (
-    <main className="main-layout py-5 [&_*]:select-none">
+    <main className="main-layout py-5 [&_*]:select-none w-full">
       <Link to="" />
       <nav className="flex justify-between items-center h-8 mt-2 mb-16">
         <button onClick={() => navigate(-1)} className="h-4/6 cursor-pointer">

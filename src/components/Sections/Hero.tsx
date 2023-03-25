@@ -69,7 +69,7 @@ export function Hero() {
       </div>
       <Marquee
         gradient={false}
-        className="text-7xl xs:text-8xl sm:text-[112px] md:text-9xl lg:text-[160px] xl:text-[208px] 2xl:text-[256px] leading-[0.8] tracking-tight font-righteous text-stroke text-transparent overflow-hidden mt-8 lg:mt-16 mb-20"
+        className="text-7xl xs:text-8xl sm:text-[112px] md:text-9xl lg:text-[160px] xl:text-[208px] 2xl:text-[256px]  tracking-tight font-righteous text-stroke text-transparent overflow-hidden mt-8 lg:mt-16 mb-20"
         speed={100}
       >
         {/* It works, so it's alright */}

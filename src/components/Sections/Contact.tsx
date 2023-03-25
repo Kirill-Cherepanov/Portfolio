@@ -1,5 +1,7 @@
 import { ContactLinks, EyeOfHorus, Icon, NavigationLinks } from '@/components';
 
+import resume from '@/assets/misc/Kirill Cherepanov Resume.pdf';
+
 import handshake from '@/assets/images/handshake.svg';
 
 export function Contact() {
@@ -24,7 +26,7 @@ export function Contact() {
             <div className="text-xl font-semibold">Check out my</div>
             <a
               target="_blank"
-              href=""
+              href={resume}
               className="text-3xl 2xs:text-4xl sm:text-5xl font-extrabold flex items-center group w-max"
             >
               <Icon
