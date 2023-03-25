@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Righteous&display=swap');
+
+/* This one is for theme switch button: https://web.dev/patterns/theming/theme-switch/ */
 @import 'https://unpkg.com/open-props/easings.min.css';
 
 @tailwind base;
@@ -6,17 +9,23 @@
 
 @layer base {
   html {
-    @apply text-secondary-1000 overflow-x-hidden selection:bg-opacity-80 selection:bg-accent-900 selection:text-main;
+    @apply scroll-smooth overflow-x-hidden;
   }
   #root {
-    @apply min-h-screen flex flex-col;
+    @apply overflow-hidden min-h-screen flex flex-col cursor-default font-raleway transition-colors duration-300 bg-main-reverse-0 dark:bg-main-0 selection:bg-opacity-80 selection:bg-accent-500 text-main-0 dark:text-main-reverse-0 dark:selection:text-main-0;
   }
 }
 
 @layer components {
-  :root {
-    --icon-fill: #ffffff;
-    --icon-fill-hover: #dddddd;
+  /* https://web.dev/patterns/theming/theme-switch/  */
+  #root {
+    --icon-fill: rgb(4 4 4);
+    --icon-fill-hover: rgb(64 64 64);
+  }
+
+  .dark #root {
+    --icon-fill: rgb(245, 245, 245);
+    --icon-fill-hover: rgb(212 212 212);
   }
 
   .sun-and-moon > :is(.moon, .sun, .sun-beams) {
@@ -92,7 +101,148 @@
     transition-duration: 0.5s;
     transition-delay: 0.25s;
   }
+
+  .animated-arrows span {
+    @apply w-2.5 h-2.5 border-b-[3px] border-r-[3px] border-main-0 dark:border-main-reverse-0 transition-colors duration-300 block rotate-45 animate-arrowAnimation;
+  }
+
+  .animated-arrows span:nth-child(2) {
+    @apply -mt-1.5;
+    animation-delay: -0.3s;
+  }
+
+  .skill-item {
+    @apply border-2 rounded-lg px-2 pt-0.5 pb-1 font-semibold transition-all duration-200 border-main-9 text-default dark:border-main-reverse-0
+    hover:border-accent-400 dark:hover:border-accent-600 hover:text-accent-600 dark:hover:text-accent-400 cursor-pointer !select-all;
+  }
+
+  .anchor-default {
+    @apply hover:text-accent-400 active:text-accent-300;
+  }
+
+  .project-info {
+    @apply space-y-3;
+  }
+
+  .project-info a {
+    @apply text-accent-300 hover:text-accent-500 active:text-accent-300;
+  }
+
+  .scroll-down-mouse {
+    @apply relative w-5 h-[30px] border-2 border-main-0 dark:border-main-reverse-0 transition-colors duration-300 rounded-2xl;
+  }
+  .scroll-down-mouse::before {
+    @apply absolute top-[20%] content-[''] left-1/2 w-1 h-1 -ml-0.5 bg-main-0 dark:bg-main-reverse-0 rounded-full;
+    -webkit-animation: scroll-down-animation 2s infinite;
+    animation: scroll-down-animation 2s infinite;
+  }
+  @keyframes scroll-down-animation {
+    0% {
+      top: 20%;
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      top: calc(80% - 4px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
 
 @layer utilities {
+  .main-layout {
+    @apply max-w-8xl mx-auto px-4 sm:px-8 md:px-10;
+  }
+
+  .text-default {
+    @apply text-main-0 dark:text-main-reverse-0;
+  }
+  .bg-default {
+    @apply bg-main-reverse-0 dark:bg-main-0;
+  }
+
+  .highlight-links a {
+    @apply text-accent-500 hover:text-accent-400 active:text-accent-300;
+  }
+
+  .gradient-text {
+    /* Need to set text color. Otherwise text opacity doesn't work */
+    @apply block bg-clip-text font-bold text-main-reverse-0 text-opacity-0 bg-[size:310%_310%] bg-main-0 dark:bg-main-reverse-0 transition-all duration-300;
+  }
+  .gradient-text-animation {
+    background-image: linear-gradient(to right, rgb(4 4 4) 30%, rgb(244 63 94) 50%, rgb(4 4 4) 70%);
+    animation: rainbow 1.5s ease-in-out infinite;
+  }
+  .dark .gradient-text-animation {
+    background-image: linear-gradient(
+      to right,
+      rgb(245 245 245) 30%,
+      rgb(244 63 94) 50%,
+      rgb(245 245 245) 70%
+    );
+    animation: rainbow 1.5s infinite;
+  }
+  @keyframes rainbow {
+    0% {
+      background-position: right;
+    }
+    100% {
+      background-position: left;
+    }
+  }
+
+  .dark .text-stroke {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(245 245 245);
+  }
+  .text-stroke {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(4 4 4);
+  }
+  @media (min-width: 1024px) {
+    .text-stroke {
+      -webkit-text-stroke-width: 3px;
+    }
+  }
+
+  .hide-scrollbar {
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /* Hide scrollbar for chrome */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .left-to-right-border {
+    @apply relative;
+  }
+  .left-to-right-border::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 border-b-2 border-b-main-0 dark:border-b-main-reverse-0 transition-all duration-200;
+  }
+  .left-to-right-border:hover::after {
+    @apply w-full;
+  }
+
+  .center-to-sides-border {
+    @apply relative;
+  }
+  .center-to-sides-border::after {
+    @apply content-[''] absolute bottom-0 left-1/2 w-0 border-b-2 border-b-main-0 dark:border-b-main-reverse-0 transition-all duration-200;
+  }
+  .center-to-sides-border::before {
+    @apply content-[''] absolute bottom-0 right-1/2 w-0 border-b-2 border-b-main-0 dark:border-b-main-reverse-0  transition-all duration-200;
+  }
+  .center-to-sides-border:hover::after {
+    @apply w-1/2;
+  }
+  .center-to-sides-border:hover::before {
+    @apply w-1/2;
+  }
 }
