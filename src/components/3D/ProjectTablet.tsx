@@ -2,14 +2,12 @@ import { Html, useGLTF } from '@react-three/drei';
 import { GroupProps } from '@react-three/fiber';
 import * as THREE from 'three';
 import { GLTF } from 'three-stdlib';
+import { useNavigate } from 'react-router-dom';
 
 import { ProjectType } from '@/types';
-import { Project } from '../Elements';
+import { useNoDragClick } from '@/hooks';
 
-const modelURL = new URL(
-  '../../assets/models/tablet.glb',
-  import.meta.url
-).toString();
+const modelURL = new URL('../../assets/models/tablet.glb', import.meta.url).toString();
 
 useGLTF.preload(modelURL);
 
@@ -31,11 +29,15 @@ type GLTFResult = GLTF & {
 };
 
 interface ProjectTabletProps extends GroupProps {
+  isMobile?: boolean;
   project: ProjectType;
 }
 
-export function ProjectTablet({ project, ...groupProps }: ProjectTabletProps) {
+export function ProjectTablet({ project, isMobile = false, ...groupProps }: ProjectTabletProps) {
   const { nodes, materials } = useGLTF(modelURL) as unknown as GLTFResult;
+
+  const navigate = useNavigate();
+  const events = useNoDragClick({ func: () => navigate(`/project/${project.name}`) });
 
   return (
     <group {...groupProps} dispose={null}>
@@ -63,17 +65,29 @@ export function ProjectTablet({ project, ...groupProps }: ProjectTabletProps) {
         >
           <Html
             rotation-x={Math.PI / 2}
+            rotation-z={isMobile ? -Math.PI / 2 : 0}
             transform
             occlude
             scale={7.3}
-            className="w-[1268px] h-[776px]"
+            style={{
+              width: isMobile ? '776px' : '1268px',
+              height: isMobile ? '1268px' : '776px',
+            }}
           >
-            <div
-              className="w-full h-full"
-              onPointerDown={(e) => e.stopPropagation()}
+            <a
+              href={`/project/${project.name}`}
+              className="w-full h-full cursor-pointer"
+              draggable={false}
+              {...events}
             >
-              <Project {...project} />
-            </div>
+              <video
+                className="w-full h-full"
+                src={isMobile ? project.demo.mobile : project.demo.desktop}
+                autoPlay
+                muted
+                loop
+              />
+            </a>
           </Html>
         </mesh>
       </group>
