@@ -1,18 +1,13 @@
-import {
-  FirstSection,
-  SecondSection,
-  ThirdSection,
-  FourthSection,
-  PageNavigation,
-} from '@/components';
+import { Hero, AboutMe, Projects, Contact, Skills } from '@/components';
 
-type LandingProps = {};
-
-export function Landing({}: LandingProps) {
+export function Landing() {
   return (
-    <div>
-      <FirstSection />
-      <SecondSection />
-    </div>
+    <main>
+      <Hero />
+      <AboutMe />
+      <Skills />
+      <Projects />
+      <Contact />
+    </main>
   );
 }
