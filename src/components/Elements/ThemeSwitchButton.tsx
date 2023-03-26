@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import { ColorThemeContext } from '@/providers';
 
@@ -7,13 +7,12 @@ type ThemeSwitchButtonProps = {
   className?: string;
 };
 
-export function ThemeSwitchButton({ className }: ThemeSwitchButtonProps) {
+export function ThemeSwitchButton_({ className }: ThemeSwitchButtonProps) {
   const [theme, toggleTheme] = useContext(ColorThemeContext);
 
   return (
     <button
       className={clsx('theme-toggle', className)}
-      id="theme-toggle"
       title="Toggles light & dark theme"
       aria-label="auto"
       aria-live="polite"
@@ -40,3 +39,5 @@ export function ThemeSwitchButton({ className }: ThemeSwitchButtonProps) {
     </button>
   );
 }
+
+export const ThemeSwitchButton = memo(ThemeSwitchButton_);

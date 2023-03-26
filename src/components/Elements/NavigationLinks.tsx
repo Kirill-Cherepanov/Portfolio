@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 type NavigationLinksProps = {
@@ -8,7 +9,7 @@ type NavigationLinksProps = {
   };
 };
 
-export function NavigationLinks({ classNames }: NavigationLinksProps) {
+export function NavigationLinks_({ classNames }: NavigationLinksProps) {
   return (
     <ul className={classNames?.list}>
       <li className={classNames?.item}>
@@ -39,3 +40,13 @@ export function NavigationLinks({ classNames }: NavigationLinksProps) {
     </ul>
   );
 }
+
+export const NavigationLinks = memo(
+  NavigationLinks_,
+  ({ classNames: classNamesPrev }, { classNames: classNamesCurr }) => {
+    if (!classNamesCurr || !classNamesPrev) return classNamesCurr === classNamesPrev;
+    return Object.entries(classNamesPrev).every(
+      ([key, value]) => classNamesCurr[key as keyof typeof classNamesCurr] === value
+    );
+  }
+);

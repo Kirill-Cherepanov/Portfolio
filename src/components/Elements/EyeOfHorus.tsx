@@ -1,30 +1,34 @@
-import { useEffect, useRef } from 'react';
-
-import { useMousePosition } from '@/hooks';
+import { useEffect, useRef, useState } from 'react';
 
 type EyeOfHorusProps = React.SVGProps<SVGSVGElement>;
 
 export function EyeOfHorus(svgProps: EyeOfHorusProps) {
-  const mousePos = useMousePosition();
   const eyeballRef = useRef<SVGGElement>(null!);
-  const angleDeg = useRef(0);
+  const [rotationAngle, setRotationAngle] = useState(0);
 
   useEffect(() => {
-    const rekt = eyeballRef.current.getBoundingClientRect();
-    const eyeballPos = {
-      x: rekt.x + rekt.width / 2 + window.scrollX,
-      y: rekt.y + rekt.height / 2 + window.scrollY,
-    };
-    angleDeg.current = angle(mousePos.x, mousePos.y, eyeballPos.x, eyeballPos.y);
-
-    function angle(cx: number, cy: number, ex: number, ey: number) {
+    function getAngle(cx: number, cy: number, ex: number, ey: number) {
       const dy = ey - cy;
       const dx = ex - cx;
       const rad = Math.atan2(dy, dx);
       const deg = (180 * rad) / Math.PI;
       return deg;
     }
-  }, [mousePos]);
+
+    const updatePosition = (e: PointerEvent) => {
+      const rekt = eyeballRef.current.getBoundingClientRect();
+      const eyeballPos = {
+        x: rekt.x + rekt.width / 2 + window.scrollX,
+        y: rekt.y + rekt.height / 2 + window.scrollY,
+      };
+      if (eyeballPos.y > window.scrollY + window.innerHeight + 200) return;
+      const mousePos = { x: e.clientX + window.scrollX, y: e.clientY + window.scrollY };
+      setRotationAngle(getAngle(mousePos.x, mousePos.y, eyeballPos.x, eyeballPos.y));
+    };
+
+    document.addEventListener('pointermove', updatePosition);
+    return () => document.removeEventListener('pointermove', updatePosition);
+  }, []);
 
   return (
     <svg
@@ -34,7 +38,7 @@ export function EyeOfHorus(svgProps: EyeOfHorusProps) {
       transform="scale(-1,1)"
       {...svgProps}
     >
-      <g ref={eyeballRef} transform={`rotate(${-angleDeg.current} 368 185)`} fill="#be123c">
+      <g ref={eyeballRef} transform={`rotate(${-rotationAngle} 368 185)`} fill="#be123c">
         <circle cx="418.5" cy="185.5" r="30.5" />
         <circle cx="368" cy="185" r="80.5" strokeWidth={0} fill="none" />
       </g>

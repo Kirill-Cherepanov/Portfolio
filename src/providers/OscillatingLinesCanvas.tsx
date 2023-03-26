@@ -7,7 +7,7 @@ const VARS = {
   oscillationWidth: 100,
   gap: 10,
   viscosity: 50,
-  mouseDist: 40,
+  pointerDist: 40,
   damping: 0.035,
   showIndicators: false,
   lineColor: '#040404',
@@ -42,13 +42,13 @@ export function OscillatingLineCanvas() {
       points[j].push(new Point(lines[j].x + lines[j].length, lines[j].y, VARS.gap));
     }
 
-    // Mouse handler
-    const mousePos = { x: 0, y: 0 };
-    const mousePosHandler = (e: MouseEvent) => {
-      mousePos.x = e.pageX;
-      mousePos.y = e.pageY;
+    // Pointer handler
+    const pointerPos = { x: 0, y: 0 };
+    const pointerPosHandle = (e: PointerEvent) => {
+      pointerPos.x = e.pageX;
+      pointerPos.y = e.pageY;
     };
-    document.addEventListener('mousemove', mousePosHandler);
+    document.addEventListener('pointermove', pointerPosHandle);
 
     renderer();
     function renderer() {
@@ -64,7 +64,7 @@ export function OscillatingLineCanvas() {
 
         // Move points
         for (let i = 0; i < points[j].length; i++) {
-          points[j][i].move(mousePos.x, mousePos.y);
+          points[j][i].move(pointerPos.x, pointerPos.y);
         }
 
         // Draw shape
@@ -95,7 +95,7 @@ export function OscillatingLineCanvas() {
 
     return () => {
       if (rafID.current) cancelAnimationFrame(rafID.current);
-      document.removeEventListener('mousemove', mousePosHandler);
+      document.removeEventListener('pointermove', pointerPosHandle);
     };
   }, [pageSize.w, pageSize.h, lines]);
 
@@ -129,14 +129,15 @@ class Point {
     Point.gap = gap;
   }
 
-  move(mouseX: number, mouseY: number) {
-    const dx = Math.abs(this.x - mouseX);
-    const dy = Math.abs(this.initialY - mouseY);
+  move(pointerX: number, pointerY: number) {
+    const dx = Math.abs(this.x - pointerX);
+    const dy = Math.abs(this.initialY - pointerY);
 
-    const direction = -Math.sign(mouseY - this.initialY);
+    const direction = -Math.sign(pointerY - this.initialY);
 
     let moveDy =
-      (VARS.mouseDist - Math.abs(VARS.mouseDist - dy)) * (1 - (dx / VARS.oscillationWidth) ** 2);
+      (VARS.pointerDist - Math.abs(VARS.pointerDist - dy)) *
+      (1 - (dx / VARS.oscillationWidth) ** 2);
     moveDy = moveDy < 0 ? 0 : moveDy * direction;
 
     if (dx < VARS.oscillationWidth) {

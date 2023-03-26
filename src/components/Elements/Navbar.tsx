@@ -32,7 +32,7 @@ export function Navbar() {
   return (
     <nav
       className={clsx(
-        'fixed left-0 right-0 z-[999999999] transition-all duration-300',
+        'fixed left-0 right-0 z-[999999999] transition-all duration-300 linear text-default',
         scrollDirection < 0 || isOnTop ? 'top-0' : '-top-full',
         isOnTop || 'bg-main-reverse-0 dark:bg-main-0'
       )}

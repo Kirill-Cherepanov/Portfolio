@@ -1,7 +1,7 @@
 import { ColorThemeContext } from '@/providers';
 import { PerspectiveCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { RefObject, useContext, useEffect, useRef } from 'react';
+import { RefObject, useContext, useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 import { Me } from '@/components';
@@ -14,7 +14,7 @@ export function AboutMeCanvas() {
   const [theme] = useContext(ColorThemeContext);
   const isScreenLg = useMinWidthMediaQuery('lg');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let shouldStop = false;
 
     // light.current is null on all the renders of useEffect
