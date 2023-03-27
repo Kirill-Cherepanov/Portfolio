@@ -70,7 +70,7 @@ export function Skills() {
               <li
                 key={skillType}
                 className={clsx(
-                  'grow w-full flex align-center rounded-lg transition-all duration-300 bg-main-reverse-2 dark:bg-main-2 hover:bg-main-reverse-3 dark:hover:bg-main-3',
+                  'grow w-full flex align-center rounded-lg transition-default bg-main-reverse-2 dark:bg-main-2 hover:bg-main-reverse-3 dark:hover:bg-main-3',
                   skillType === currentTab ? 'grow-[1.3] text-accent-500' : 'text-default'
                 )}
               >

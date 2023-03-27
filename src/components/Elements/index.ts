@@ -13,3 +13,4 @@ export * from './ProjectsPopup';
 export * from './AboutMeCanvas';
 export * from './NavigationLinks';
 export * from './ContactLinks';
+export * from './Spinner';

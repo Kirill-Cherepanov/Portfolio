@@ -1,36 +1,10 @@
-import { StrictMode } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppProvider } from '@/providers';
+import { AppRoutes } from '@/routes';
 
-import { Navbar } from '@/components';
-import { Landing, ProjectPage } from '@/routes';
-import { ColorThemeProvider, OscillatingLinesProvider } from '@/providers';
-
-export default function App() {
+export function App() {
   return (
-    <StrictMode>
-      <BrowserRouter>
-        <ColorThemeProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Navbar />
-                  <Landing />
-                </>
-              }
-            />
-            <Route
-              path="/project/:name"
-              element={
-                <OscillatingLinesProvider>
-                  <ProjectPage />
-                </OscillatingLinesProvider>
-              }
-            />
-          </Routes>
-        </ColorThemeProvider>
-      </BrowserRouter>
-    </StrictMode>
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
   );
 }

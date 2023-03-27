@@ -31,11 +31,11 @@ export function Contact() {
             >
               <Icon
                 type="long-arrow"
-                className="rotate-180 h-5 sm:h-6 inline mr-3 mb-1.5 2xs:mb-2 text-default group-hover:text-accent-500 group-hover:mr-4 group-hover:ml-1 transition-all duration-300"
+                className="rotate-180 h-5 sm:h-6 inline mr-3 mb-1.5 2xs:mb-2 text-default group-hover:text-accent-500 group-hover:mr-4 group-hover:ml-1 transition-default"
               />
               <div className="flex flex-col gap-1.5 2xs:gap-2">
                 <span>Resume</span>
-                <span className="w-full h-0.5 bg-main-0 dark:bg-main-reverse-0 transition-all duration-300 group-hover:bg-accent-500 group-hover:ml-4" />
+                <span className="w-full h-0.5 bg-main-0 dark:bg-main-reverse-0 transition-default group-hover:bg-accent-500 group-hover:ml-4" />
               </div>
             </a>
           </div>
@@ -47,7 +47,7 @@ export function Contact() {
             <ContactLinks
               classNames={{
                 list: 'flex xs:flex-col lg:flex-row xl:flex-col xl:h-full items-end justify-center xs:justify-end xl:justify-between gap-6 sm:gap-8',
-                icon: 'h-12 sm:h-16 hover:text-accent-500 hover:scale-110 transition-all duration-300 text-default',
+                icon: 'h-12 sm:h-16 hover:text-accent-500 hover:scale-110 transition-default text-default',
               }}
             />
           </div>

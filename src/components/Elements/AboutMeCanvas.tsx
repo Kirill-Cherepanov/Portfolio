@@ -1,5 +1,5 @@
 import { ColorThemeContext } from '@/providers';
-import { PerspectiveCamera } from '@react-three/drei';
+import { Loader, PerspectiveCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { RefObject, useContext, useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -33,10 +33,11 @@ export function AboutMeCanvas() {
     return () => {
       shouldStop = true;
     };
-  }, [isScreenLg, theme]);
+  });
 
   return (
     <Canvas shadows>
+      {/* <Loader /> */}
       <PerspectiveCamera
         makeDefault
         position={isScreenLg ? [0, 5.5, 6] : [0, 4.85, 2.5]}

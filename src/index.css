@@ -12,91 +12,75 @@
     @apply scroll-smooth overflow-x-hidden;
   }
   #root {
-    @apply overflow-hidden min-h-screen flex flex-col cursor-default font-raleway transition-colors duration-300 bg-main-reverse-0 dark:bg-main-0 selection:bg-opacity-80 selection:bg-accent-500 text-main-0 dark:text-main-reverse-0 dark:selection:text-main-0;
+    @apply overflow-hidden min-h-screen flex flex-col cursor-default font-raleway transition-colors duration-300 ease-linear bg-main-reverse-0 dark:bg-main-0 selection:bg-opacity-80 selection:bg-accent-500 text-main-0 dark:text-main-reverse-0 dark:selection:text-main-0;
   }
 }
 
 @layer components {
   /* https://web.dev/patterns/theming/theme-switch/  */
   #root {
-    --icon-fill: rgb(4 4 4);
-    --icon-fill-hover: rgb(64 64 64);
+    --main-color: rgb(4 4 4);
+    --main-color-hover: rgb(64 64 64);
+    --accent-color: rgb(244 63 94);
   }
-
   .dark #root {
-    --icon-fill: rgb(245, 245, 245);
-    --icon-fill-hover: rgb(212 212 212);
+    --main-color: rgb(245 245 245);
+    --main-color-hover: rgb(212 212 212);
   }
-
   .sun-and-moon > :is(.moon, .sun, .sun-beams) {
     transform-origin: center;
   }
-
   .sun-and-moon > :is(.moon, .sun) {
-    fill: var(--icon-fill);
+    fill: var(--main-color);
   }
-
   .theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
-    fill: var(--icon-fill-hover);
+    fill: var(--main-color-hover);
   }
-
   .sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill);
+    stroke: var(--main-color);
     stroke-width: 2px;
   }
-
   .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill-hover);
+    stroke: var(--main-color-hover);
   }
-
   [data-theme='dark'] .sun-and-moon > .sun {
     transform: scale(1.75);
   }
-
   [data-theme='dark'] .sun-and-moon > .sun-beams {
     opacity: 0;
   }
-
   [data-theme='dark'] .sun-and-moon > .moon > circle {
     transform: translateX(-7px);
   }
-
   @supports (cx: 1) {
     [data-theme='dark'] .sun-and-moon > .moon > circle {
       cx: 17;
       transform: translateX(0);
     }
   }
-
   .sun-and-moon > .sun {
     transition: transform 0.5s var(--ease-elastic-3);
   }
-
   .sun-and-moon > .sun-beams {
     transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
   }
-
   .sun-and-moon .moon > circle {
     transition: transform 0.25s var(--ease-out-5);
   }
-
   @supports (cx: 1) {
     .sun-and-moon .moon > circle {
       transition: cx 0.25s var(--ease-out-5);
     }
   }
-
   [data-theme='dark'] .sun-and-moon > .sun {
     transition-timing-function: var(--ease-3);
     transition-duration: 0.25s;
     transform: scale(1.75);
   }
-
   [data-theme='dark'] .sun-and-moon > .sun-beams {
     transition-duration: 0.15s;
     transform: rotateZ(-25deg);
   }
-
   [data-theme='dark'] .sun-and-moon > .moon > circle {
     transition-duration: 0.5s;
     transition-delay: 0.25s;
@@ -105,7 +89,6 @@
   .animated-arrows span {
     @apply w-2.5 h-2.5 border-b-[3px] border-r-[3px] border-main-0 dark:border-main-reverse-0 transition-colors duration-300 block rotate-45 animate-arrowAnimation;
   }
-
   .animated-arrows span:nth-child(2) {
     @apply -mt-1.5;
     animation-delay: -0.3s;
@@ -123,7 +106,6 @@
   .project-info {
     @apply space-y-3;
   }
-
   .project-info a {
     @apply text-accent-300 hover:text-accent-500 active:text-accent-300;
   }
@@ -152,6 +134,40 @@
       opacity: 0;
     }
   }
+
+  .spinner {
+    @apply animate-hueRotate transition-default relative w-[150px] h-[150px] border-[3px] border-main-reverse-2 dark:border-main-5 rounded-full text-center leading-[150px] text-xl font-bold tracking-widest text-accent-500 uppercase shadow-xl;
+    text-shadow: 0 0 10px var(--accent-color);
+  }
+  .spinner:before {
+    @apply transition-default content-[''] absolute box-content -top-[3px] -left-[3px] w-full h-full border-[3px] border-accent-500 border-l-transparent border-b-transparent rounded-full;
+    animation: spinnerAnimation1 2s linear infinite;
+  }
+  .spinner span {
+    @apply block absolute left-1/2 w-1/2 h-1 origin-left;
+    top: calc(50% - 2px);
+    animation: spinnerAnimation2 2s linear infinite;
+  }
+  .spinner span:before {
+    @apply content-[''] absolute w-4 h-4 rounded-full bg-accent-500 -top-2 -right-2;
+    box-shadow: 0 0 20px var(--accent-color);
+  }
+  @keyframes spinnerAnimation1 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spinnerAnimation2 {
+    0% {
+      transform: rotate(45deg);
+    }
+    100% {
+      transform: rotate(405deg);
+    }
+  }
 }
 
 @layer utilities {
@@ -159,6 +175,9 @@
     @apply max-w-8xl mx-auto px-4 sm:px-8 md:px-10;
   }
 
+  .transition-default {
+    @apply transition-all duration-300 ease-linear;
+  }
   .text-default {
     @apply text-main-0 dark:text-main-reverse-0;
   }
@@ -172,21 +191,26 @@
 
   .gradient-text {
     /* Need to set text color. Otherwise text opacity doesn't work */
-    @apply block bg-clip-text font-bold text-main-reverse-0 text-opacity-0 bg-[size:310%_310%] bg-main-0 dark:bg-main-reverse-0 transition-all duration-300;
+    @apply block bg-clip-text font-bold text-main-reverse-0 text-opacity-0 bg-[size:310%_310%] bg-main-0 dark:bg-main-reverse-0 transition-default;
   }
   .gradient-text-animation {
-    background-image: linear-gradient(to right, rgb(4 4 4) 30%, rgb(244 63 94) 50%, rgb(4 4 4) 70%);
-    animation: rainbow 1.5s ease-in-out infinite;
-  }
-  .dark .gradient-text-animation {
     background-image: linear-gradient(
       to right,
-      rgb(245 245 245) 30%,
+      rgb(var(--main-color)) 30%,
+      rgb(var(--accent-color)) 50%,
+      rgb(var(--main-color)) 70%
+    );
+    animation: rainbow 1.5s ease-in-out infinite;
+  }
+  /* .dark .gradient-text-animation {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--main-color)) 30%,
       rgb(244 63 94) 50%,
-      rgb(245 245 245) 70%
+      rgb(var(--main-color)) 70%
     );
     animation: rainbow 1.5s infinite;
-  }
+  } */
   @keyframes rainbow {
     0% {
       background-position: right;
@@ -196,13 +220,13 @@
     }
   }
 
-  .dark .text-stroke {
+  /* .dark .text-stroke {
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(245 245 245);
-  }
+    -webkit-text-stroke-color: rgb(var(--main-color));
+  } */
   .text-stroke {
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(4 4 4);
+    -webkit-text-stroke-color: rgb(var(--main-color));
   }
   @media (min-width: 1024px) {
     .text-stroke {

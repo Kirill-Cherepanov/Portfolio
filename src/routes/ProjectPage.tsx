@@ -51,7 +51,7 @@ export function ProjectPage() {
           <button
             onClick={() => setIsMobilePreview(false)}
             className={clsx(
-              'border-b border-main-0 dark:border-main-reverse-0 transition-all duration-300 text-default',
+              'border-b border-main-0 dark:border-main-reverse-0 transition-default text-default',
               isMobilePreview
                 ? 'border-opacity-0 dark:border-opacity-0 hover:border-opacity-50'
                 : 'border-opacity-100'
@@ -62,7 +62,7 @@ export function ProjectPage() {
           <button
             onClick={() => setIsMobilePreview(true)}
             className={clsx(
-              'border-b border-main-0 dark:border-main-reverse-0 transition-all duration-300 text-default',
+              'border-b border-main-0 dark:border-main-reverse-0 transition-default text-default',
               isMobilePreview
                 ? 'border-opacity-100'
                 : 'border-opacity-0 dark:border-opacity-0 hover:border-opacity-50'
@@ -106,14 +106,14 @@ export function ProjectPage() {
       <div className="my-8 flex justify-evenly">
         <a
           href={project.urls.deploy}
-          className="font-righteous tracking-wide font-bold text-xl gradient-text hover:gradient-text-animation transition-all duration-300 hover:scale-105"
+          className="font-righteous tracking-wide font-bold text-xl gradient-text hover:gradient-text-animation transition-default hover:scale-105"
           target="_blank"
         >
           Deploy
         </a>
         <a
           href={project.urls.repo}
-          className="font-righteous tracking-wide font-bold text-xl gradient-text hover:gradient-text-animation transition-all duration-300 hover:scale-105"
+          className="font-righteous tracking-wide font-bold text-xl gradient-text hover:gradient-text-animation transition-default hover:scale-105"
           target="_blank"
         >
           Repository
@@ -159,7 +159,7 @@ export function ProjectPage() {
           to={`/project/${nextArrElement(projects, project).name}`}
           className="h-full ml-auto max-w-max flex flex-wrap items-center text-lg group"
         >
-          <span className="group-hover:-translate-x-2.5 transition-all duration-300 text-default mr-1.5">
+          <span className="group-hover:-translate-x-2.5 transition-default text-default mr-1.5">
             Next Project:
           </span>
           <div className="flex ml-auto gap-2.5 items-center">

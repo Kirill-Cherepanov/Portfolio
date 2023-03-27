@@ -32,7 +32,7 @@ export function Navbar() {
   return (
     <nav
       className={clsx(
-        'fixed left-0 right-0 z-[999999999] transition-all duration-300 linear text-default',
+        'fixed left-0 right-0 z-[999999999] transition-default text-default',
         scrollDirection < 0 || isOnTop ? 'top-0' : '-top-full',
         isOnTop || 'bg-main-reverse-0 dark:bg-main-0'
       )}
@@ -61,7 +61,7 @@ export function Navbar() {
         >
           <div
             className={clsx(
-              'w-full xs:w-80 h-screen fixed top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-all duration-300 bg-default text-default',
+              'w-full xs:w-80 h-screen fixed top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-default bg-default text-default',
               isOpen ? '-translate-x-full' : 'translate-x-0'
             )}
           >

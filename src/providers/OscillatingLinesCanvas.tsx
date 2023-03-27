@@ -102,7 +102,7 @@ export function OscillatingLineCanvas() {
   // Don't set width and height here. It's done dynamically in useEffect
   return (
     <canvas
-      className="absolute pointer-events-none transition-all duration-300 dark:invert"
+      className="absolute pointer-events-none transition-default dark:invert"
       ref={canvasRef}
     />
   );
