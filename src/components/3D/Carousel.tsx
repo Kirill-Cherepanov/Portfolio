@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { GroupProps, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import deepEqual from 'deep-equal';
 
 import { projects, ProjectsAnglesType, ProjectTablet } from '@/components';
 import { cotangent, normalizeAngle } from '@/utility';
@@ -45,7 +46,7 @@ interface CarouselProps extends GroupProps {
   setProjectsAngles?: (projectsAngles: ProjectsAnglesType) => void;
 }
 
-export function Carousel({ setProjectsAngles, ...props }: CarouselProps) {
+function Carousel_({ setProjectsAngles, ...props }: CarouselProps) {
   const isScreenMd = useMinWidthMediaQuery('md');
 
   const total = projects.length;
@@ -105,3 +106,5 @@ export function Carousel({ setProjectsAngles, ...props }: CarouselProps) {
     </group>
   );
 }
+
+export const Carousel = memo(Carousel_, deepEqual);

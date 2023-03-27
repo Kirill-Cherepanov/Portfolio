@@ -1,7 +1,7 @@
 import { ColorThemeContext } from '@/providers';
-import { Loader, PerspectiveCamera } from '@react-three/drei';
+import { PerformanceMonitor, PerspectiveCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { RefObject, useContext, useLayoutEffect, useRef } from 'react';
+import { RefObject, useContext, useLayoutEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { Me } from '@/components';
@@ -13,6 +13,7 @@ export function AboutMeCanvas() {
   const dirLight = useRef<THREE.DirectionalLight>(null);
   const [theme] = useContext(ColorThemeContext);
   const isScreenLg = useMinWidthMediaQuery('lg');
+  const [dpr, setDpr] = useState(window.devicePixelRatio);
 
   useLayoutEffect(() => {
     let shouldStop = false;
@@ -36,8 +37,11 @@ export function AboutMeCanvas() {
   });
 
   return (
-    <Canvas shadows>
-      {/* <Loader /> */}
+    <Canvas shadows dpr={dpr}>
+      <PerformanceMonitor
+        factor={0.5}
+        onChange={({ factor }) => setDpr(() => 0.5 + (window.devicePixelRatio - 0.5) * factor)}
+      />
       <PerspectiveCamera
         makeDefault
         position={isScreenLg ? [0, 5.5, 6] : [0, 4.85, 2.5]}

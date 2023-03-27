@@ -1,11 +1,12 @@
 import clsx from 'clsx';
+import { memo } from 'react';
 
 import { Icon } from '@/components';
 import { useNoDragClick } from '@/hooks';
 
 type ProjectsPopupProps = { isOpen: boolean; close: Function };
 
-export function ProjectsPopup({ isOpen, close }: ProjectsPopupProps) {
+function ProjectsPopup_({ isOpen, close }: ProjectsPopupProps) {
   const events = useNoDragClick({
     func: close,
     extendedEvents: {
@@ -51,3 +52,5 @@ export function ProjectsPopup({ isOpen, close }: ProjectsPopupProps) {
     </div>
   );
 }
+
+export const ProjectsPopup = memo(ProjectsPopup_);

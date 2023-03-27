@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { HashLink } from 'react-router-hash-link';
+import deepEqual from 'deep-equal';
 
 type NavigationLinksProps = {
   classNames?: {
@@ -41,12 +42,4 @@ export function NavigationLinks_({ classNames }: NavigationLinksProps) {
   );
 }
 
-export const NavigationLinks = memo(
-  NavigationLinks_,
-  ({ classNames: classNamesPrev }, { classNames: classNamesCurr }) => {
-    if (!classNamesCurr || !classNamesPrev) return classNamesCurr === classNamesPrev;
-    return Object.entries(classNamesPrev).every(
-      ([key, value]) => classNamesCurr[key as keyof typeof classNamesCurr] === value
-    );
-  }
-);
+export const NavigationLinks = memo(NavigationLinks_, deepEqual);

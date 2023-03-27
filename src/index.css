@@ -220,13 +220,9 @@
     }
   }
 
-  /* .dark .text-stroke {
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(var(--main-color));
-  } */
   .text-stroke {
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(var(--main-color));
+    -webkit-text-stroke-color: var(--main-color);
   }
   @media (min-width: 1024px) {
     .text-stroke {

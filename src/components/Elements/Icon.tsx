@@ -11,9 +11,11 @@ const defaultProps = {
   'aria-hidden': 'true',
 };
 
-export function Icon({ type, ...svgProps }: IconProps) {
+function Icon_({ type, ...svgProps }: IconProps) {
   return React.cloneElement(ICONS[type], { ...defaultProps, ...svgProps });
 }
+
+export const Icon = React.memo(Icon_);
 
 const ICONS = {
   info: (
