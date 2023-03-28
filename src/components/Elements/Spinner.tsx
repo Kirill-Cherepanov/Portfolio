@@ -1,8 +1,10 @@
-type SpinnerProps = {};
+import clsx from 'clsx';
 
-export function Spinner({}: SpinnerProps) {
+type SpinnerProps = { className?: string };
+
+export function Spinner({ className }: SpinnerProps) {
   return (
-    <div className="spinner">
+    <div className={clsx('spinner', className)}>
       Loading
       <span></span>
     </div>

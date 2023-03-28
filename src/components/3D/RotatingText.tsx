@@ -5,14 +5,6 @@ import { GroupProps, useFrame } from '@react-three/fiber';
 
 import typeFace from '@/assets/fonts/Roboto_Regular.json';
 
-interface TextProps extends GroupProps {
-  backgroundTexture?: THREE.Texture;
-  children?: React.ReactNode;
-  size?: number;
-  color?: THREE.ColorRepresentation;
-  isControlled?: boolean;
-}
-
 const TEXT_OPTIONS = {
   size: 40,
   height: 30,
@@ -23,23 +15,29 @@ const TEXT_OPTIONS = {
   bevelOffset: 0,
   bevelSegments: 8,
 };
-
 const ROTATION_SPEED = 0.002;
 const ROTATION_DELAY = 1000;
 
-export function Text({
+interface RotatingTextProps extends GroupProps {
+  backgroundTexture?: THREE.Texture;
+  children?: React.ReactNode;
+  size?: number;
+  color?: THREE.ColorRepresentation;
+  isControlled?: boolean;
+}
+
+export function RotatingText({
   children,
   size = 1.5,
   color = 0xffffff,
   isControlled = false,
   backgroundTexture,
   ...props
-}: TextProps) {
+}: RotatingTextProps) {
   const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>(
     null!
   );
   const groupRef = useRef<THREE.Group>(null!);
-
   const shouldRotate = useRef(!isControlled);
 
   useFrame(() => {
@@ -50,9 +48,7 @@ export function Text({
     let timeout: NodeJS.Timeout | undefined;
 
     if (isControlled) shouldRotate.current = false;
-    else {
-      timeout = setTimeout(() => (shouldRotate.current = true), ROTATION_DELAY);
-    }
+    else timeout = setTimeout(() => (shouldRotate.current = true), ROTATION_DELAY);
 
     return () => clearTimeout(timeout);
   }, [isControlled]);

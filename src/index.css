@@ -205,21 +205,12 @@
   .gradient-text-animation {
     background-image: linear-gradient(
       to right,
-      rgb(var(--main-color)) 30%,
-      rgb(var(--accent-color)) 50%,
-      rgb(var(--main-color)) 70%
+      var(--main-color) 30%,
+      var(--accent-color) 50%,
+      var(--main-color) 70%
     );
-    animation: rainbow 1.5s ease-in-out infinite;
+    animation: rainbow 1.5s linear infinite;
   }
-  /* .dark .gradient-text-animation {
-    background-image: linear-gradient(
-      to right,
-      rgb(var(--main-color)) 30%,
-      rgb(244 63 94) 50%,
-      rgb(var(--main-color)) 70%
-    );
-    animation: rainbow 1.5s infinite;
-  } */
   @keyframes rainbow {
     0% {
       background-position: right;

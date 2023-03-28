@@ -1,5 +1,4 @@
-import { Suspense, SVGProps } from 'react';
-import { Spinner } from './Spinner';
+import { SVGProps } from 'react';
 
 type MonitorProps = SVGProps<SVGSVGElement> & { src: string };
 
@@ -32,9 +31,7 @@ export function Monitor({ src, ...svgProps }: MonitorProps) {
         <g clipPath="url(#screen)">
           <foreignObject width="566.28" height="354" x="7" y="8">
             <div className="h-full flex items-center justify-center">
-              <Suspense fallback={<Spinner />}>
-                <video src={src} autoPlay muted loop playsInline />
-              </Suspense>
+              <video src={src} autoPlay muted loop playsInline />
             </div>
           </foreignObject>
         </g>

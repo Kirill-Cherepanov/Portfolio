@@ -41,11 +41,10 @@ export function Navbar() {
         <div className="main-layout flex justify-between items-center py-6 text-lg uppercase font-semibold tracking-widest">
           <div className="grow">
             <HashLink smooth to="/#top">
-              <Logo className="h-14 text-default transition-color duration-300" />
+              <Logo className="h-14 text-default transition-color duration-300 hover:text-main-8 dark:hover:text-main-reverse-3" />
             </HashLink>
           </div>
           <NavigationLinks
-            onClick={close}
             classNames={{
               list: 'flex justify-between items-center grow-[2]',
               link: 'pb-1.5 center-to-sides-border',
@@ -62,13 +61,14 @@ export function Navbar() {
         >
           <div
             className={clsx(
-              'w-full xs:w-80 h-screen fixed top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-default bg-default text-default',
+              'w-full xs:w-80 h-full fixed top-0 -right-full xs:-right-80 pt-28 pb-8 px-8 flex flex-col transition-default bg-default text-default',
               isOpen ? '-translate-x-full' : 'translate-x-0'
             )}
           >
             <NavigationLinks
+              onClick={close}
               classNames={{
-                list: 'flex flex-col gap-5 text-xl uppercase font-black tracking-widest',
+                list: 'flex flex-col gap-5 text-2xl uppercase font-black tracking-wider',
                 link: 'pb-1.5 left-to-right-border after:!border-b-[3px]',
               }}
             />
@@ -88,7 +88,7 @@ export function Navbar() {
             </div>
           </div>
           <HashLink smooth to="/#top" className="relative">
-            <Logo className="h-12 xs:h-14 text-default transition-color duration-300" />
+            <Logo className="h-12 xs:h-14 text-default transition-color duration-300 hover:text-main-8 dark:hover:text-main-reverse-3" />
           </HashLink>
           <HamburgerButton isOpen={isOpen} onClick={toggle} size={1.12} />
         </div>

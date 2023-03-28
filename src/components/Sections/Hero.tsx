@@ -1,33 +1,17 @@
-import { useState, useLayoutEffect, useRef, useContext } from 'react';
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
 import { HashLink } from 'react-router-hash-link';
-import * as THREE from 'three';
 import Marquee from 'react-fast-marquee';
 
-import { Icon, Text, ScrollDownTextCircle } from '@/components';
-import { ColorThemeContext } from '@/providers';
-import { useMinWidthMediaQuery } from '@/hooks';
+import { Icon, ScrollDownTextCircle, HeroCanvas } from '@/components';
 
 import diamond from '@/assets/images/diamond.png';
-
-const backgroundImageDark = new URL(
-  '../../assets/images/backgroundDark.webp',
-  import.meta.url
-).toString();
-const backgroundTextureDark = new THREE.TextureLoader().load(backgroundImageDark);
-const backgroundImageLight = new URL(
-  '../../assets/images/backgroundLight.webp',
-  import.meta.url
-).toString();
-const backgroundTextureLight = new THREE.TextureLoader().load(backgroundImageLight);
+import { Canvas } from '@react-three/fiber';
 
 export function Hero() {
   return (
     <section>
       <div className="mt-24 sm:mt-0 h-[400px] md:h-screen relative">
         <Canvas camera={{ fov: 30 }} className="cursor-pointer">
-          <Hero3DText />
+          <HeroCanvas />
         </Canvas>
         <div className="absolute left-4 bottom-4 lg:left-10 lg:bottom-10 flex items-center gap-4 group w-16 sm:w-20 lg:w-24">
           <Icon type="swipe" className="h-full w-full shrink-0" />
@@ -76,47 +60,5 @@ export function Hero() {
         READY FOR HIRE!{'ㅤ·ㅤ'}READY FOR HIRE!{'ㅤ·ㅤ'}
       </Marquee>
     </section>
-  );
-}
-
-function Hero3DText() {
-  const [theme] = useContext(ColorThemeContext);
-  const [isControlled, setIsControlled] = useState(false);
-  const sphereRef = useRef<THREE.SphereGeometry>(null!);
-  const environmentRef = useRef<THREE.Mesh>(null!);
-  const isScreenSm = useMinWidthMediaQuery('sm');
-  const isScreenMd = useMinWidthMediaQuery('md');
-
-  useLayoutEffect(() => {
-    sphereRef.current.scale(1, 1, -1);
-  }, []);
-
-  const backgroundTexture = theme === 'dark' ? backgroundTextureDark : backgroundTextureLight;
-
-  return (
-    <>
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        minDistance={isScreenMd || !isScreenSm ? 105 : 150}
-        maxDistance={isScreenMd || !isScreenSm ? 105 : 150}
-        minPolarAngle={Math.PI / 3}
-        maxPolarAngle={(2 * Math.PI) / 3}
-        onStart={() => setIsControlled(true)}
-        onEnd={() => setIsControlled(false)}
-        dampingFactor={0.15}
-      />
-      <mesh ref={environmentRef}>
-        <sphereGeometry ref={sphereRef} args={[500, 60, 40]} />
-        {/* Sometimes mesh disappears. By adding key={theme} it at least fixes itself after the change of theme */}
-        <meshBasicMaterial map={backgroundTexture} key={theme} />
-      </mesh>
-      <Text isControlled={isControlled} position={[0, 4, 0]} backgroundTexture={backgroundTexture}>
-        Kirill
-      </Text>
-      <Text isControlled={isControlled} position={[0, -4, 0]} backgroundTexture={backgroundTexture}>
-        Cherepanov
-      </Text>
-    </>
   );
 }

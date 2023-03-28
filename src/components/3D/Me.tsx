@@ -5,8 +5,6 @@ import { GLTF } from 'three-stdlib';
 
 const modelURL = new URL('../../assets/models/me_animated.glb', import.meta.url).toString();
 
-useGLTF.preload(modelURL);
-
 type GLTFResult = GLTF & {
   nodes: {
     Wolf3D_Body002: THREE.SkinnedMesh;
