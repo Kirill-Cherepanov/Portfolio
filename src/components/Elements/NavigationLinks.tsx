@@ -1,8 +1,9 @@
-import { memo } from 'react';
+import { memo, MouseEventHandler } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import deepEqual from 'deep-equal';
 
 type NavigationLinksProps = {
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
   classNames?: {
     list?: string;
     item?: string;
@@ -10,31 +11,31 @@ type NavigationLinksProps = {
   };
 };
 
-export function NavigationLinks_({ classNames }: NavigationLinksProps) {
+export function NavigationLinks_({ onClick, classNames }: NavigationLinksProps) {
   return (
     <ul className={classNames?.list}>
       <li className={classNames?.item}>
-        <HashLink className={classNames?.link} smooth to="/#top">
+        <HashLink className={classNames?.link} onClick={onClick} smooth to="/#top">
           Hero
         </HashLink>
       </li>
       <li className={classNames?.item}>
-        <HashLink className={classNames?.link} smooth to="/#about-me">
+        <HashLink className={classNames?.link} onClick={onClick} smooth to="/#about-me">
           Me
         </HashLink>
       </li>
       <li className={classNames?.item}>
-        <HashLink className={classNames?.link} smooth to="/#projects">
+        <HashLink className={classNames?.link} onClick={onClick} smooth to="/#projects">
           Projects
         </HashLink>
       </li>
       <li className={classNames?.item}>
-        <HashLink className={classNames?.link} smooth to="/#skills">
+        <HashLink className={classNames?.link} onClick={onClick} smooth to="/#skills">
           Skills
         </HashLink>
       </li>
       <li className={classNames?.item}>
-        <HashLink className={classNames?.link} smooth to="/#contact">
+        <HashLink className={classNames?.link} onClick={onClick} smooth to="/#contact">
           Contact
         </HashLink>
       </li>

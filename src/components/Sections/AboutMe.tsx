@@ -1,6 +1,7 @@
 import { HashLink } from 'react-router-hash-link';
+import { Suspense } from 'react';
 
-import { AboutMeCanvas } from '@/components';
+import { AboutMeCanvas, Loader } from '@/components';
 
 export function AboutMe() {
   return (
@@ -79,9 +80,18 @@ export function AboutMe() {
             <div className="uppercase font-bold shrink-0">Scroll text</div>
           </div>
         </div>
-        <div className="h-[360px] lg:absolute lg:left-[calc(-100%_+_10em)] lg:w-[200%] lg:h-full">
-          <AboutMeCanvas />
-        </div>
+
+        <Suspense
+          fallback={
+            <div className="h-[360px] lg:absolute lg:h-full lg:w-[500px] flex items-center justify-center">
+              <Loader />
+            </div>
+          }
+        >
+          <div className="h-[360px] lg:absolute lg:left-[calc(-100%_+_10em)] lg:w-[200%] lg:h-full">
+            <AboutMeCanvas />
+          </div>
+        </Suspense>
       </div>
     </section>
   );

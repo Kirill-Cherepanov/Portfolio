@@ -14,3 +14,4 @@ export * from './AboutMeCanvas';
 export * from './NavigationLinks';
 export * from './ContactLinks';
 export * from './Spinner';
+export * from './Loader';

@@ -168,6 +168,15 @@
       transform: rotate(405deg);
     }
   }
+
+  .radial-loader-bar {
+    @apply h-40 w-40 flex justify-center items-center text-2xl font-righteous relative;
+  }
+  .radial-loader-bar span {
+    @apply absolute top-0 left-0 w-full h-full rounded-full z-10;
+    mask-image: radial-gradient(transparent 57%, black calc(57% + 0.5px));
+    -webkit-mask-image: radial-gradient(transparent 57%, black calc(57% + 0.5px));
+  }
 }
 
 @layer utilities {

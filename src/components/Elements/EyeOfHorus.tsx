@@ -21,7 +21,7 @@ export function EyeOfHorus(svgProps: EyeOfHorusProps) {
 }
 
 function EyeballOfHorus() {
-  const eyeballRef = useRef<SVGGElement>(null!);
+  const eyeballRef = useRef<SVGGElement>(null);
   const [rotationAngle, setRotationAngle] = useState(0);
 
   useEffect(() => {
@@ -34,6 +34,7 @@ function EyeballOfHorus() {
     }
 
     const updatePosition = (e: PointerEvent) => {
+      if (!eyeballRef.current) return;
       const rekt = eyeballRef.current.getBoundingClientRect();
       const eyeballPos = {
         x: rekt.x + rekt.width / 2 + window.scrollX,

@@ -86,6 +86,7 @@ export function ProjectTablet({ project, isMobile = false, ...groupProps }: Proj
                 autoPlay
                 muted
                 loop
+                playsInline
               />
             </a>
           </Html>

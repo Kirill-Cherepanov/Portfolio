@@ -13,6 +13,7 @@ import {
   Logo,
 } from '@/components';
 import { nextArrElement } from '@/utility';
+import { HashLink } from 'react-router-hash-link';
 
 export function ProjectPage() {
   const [isMobilePreview, setIsMobilePreview] = useState(
@@ -27,14 +28,13 @@ export function ProjectPage() {
 
   return (
     <main className="main-layout py-5 [&_*]:select-none w-full">
-      <Link to="" />
       <nav className="flex justify-between items-center h-8 mt-2 mb-16">
-        <button onClick={() => navigate(-1)} className="h-4/6 cursor-pointer">
+        <HashLink to="/#projects" className="h-4/6 cursor-pointer">
           <Icon
             type="long-arrow"
             className="h-full hover:text-accent-400 text-default transition-colors duration-300"
           />
-        </button>
+        </HashLink>
         <Link to="/">
           <Logo className="h-16" />
         </Link>

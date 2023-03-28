@@ -11,12 +11,7 @@ type SmartphoneProps = SVGProps<SVGSVGElement> & { src: string };
 
 export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
   return (
-    <svg
-      viewBox="0 0 250 504"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...svgProps}
-    >
+    <svg viewBox="0 0 250 504" fill="none" xmlns="http://www.w3.org/2000/svg" {...svgProps}>
       <g clipPath="url(#clip0_21_274)">
         <path
           d="M248.816 116.589C249.472 116.589 250 117.119 250 117.778V173.016C250 173.675 249.472 174.206 248.816 174.206H239.697C239.041 174.206 238.513 173.675 238.513 173.016V117.778C238.513 117.119 239.041 116.589 239.697 116.589H248.816Z"
@@ -133,40 +128,22 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
         <g clipPath="url(#screen)">
           <foreignObject width="218" height="454" x="16" y="34">
             <div className="h-full flex items-center">
-              <video src={src} autoPlay muted loop />
+              <video src={src} autoPlay muted loop playsInline />
             </div>
           </foreignObject>
         </g>
 
         <rect x="16" y="15" width="218" height="19" fill="black" />
-        <path
-          d="M2.1958 52.2892H5.08884V48.8533H2.1958V52.2892Z"
-          fill="#7D7E7F"
-        />
-        <path
-          d="M2.1958 451.522H5.08884V52.2892H2.1958V451.522Z"
-          fill="#EBEBEB"
-        />
-        <path
-          d="M2.1958 454.959H5.08884V451.522H2.1958V454.959Z"
-          fill="#7D7E7F"
-        />
+        <path d="M2.1958 52.2892H5.08884V48.8533H2.1958V52.2892Z" fill="#7D7E7F" />
+        <path d="M2.1958 451.522H5.08884V52.2892H2.1958V451.522Z" fill="#EBEBEB" />
+        <path d="M2.1958 454.959H5.08884V451.522H2.1958V454.959Z" fill="#7D7E7F" />
         <path
           d="M247.804 454.959H244.911V466.457C244.911 485.006 230.05 499.939 211.59 499.939H38.41C19.9501 499.939 5.08884 485.006 5.08884 466.457V454.959H2.1958V464.936C2.1958 485.646 18.7886 502.319 39.3987 502.319H210.601C231.211 502.319 247.804 485.646 247.804 464.936V454.959Z"
           fill="#EBEBEB"
         />
-        <path
-          d="M247.804 451.522H244.911V454.959H247.804V451.522Z"
-          fill="#7D7E7F"
-        />
-        <path
-          d="M247.804 52.2892H244.911V451.522H247.804V52.2892Z"
-          fill="#EBEBEB"
-        />
-        <path
-          d="M247.804 48.8533H244.911V52.2892H247.804V48.8533Z"
-          fill="#7D7E7F"
-        />
+        <path d="M247.804 451.522H244.911V454.959H247.804V451.522Z" fill="#7D7E7F" />
+        <path d="M247.804 52.2892H244.911V451.522H247.804V52.2892Z" fill="#EBEBEB" />
+        <path d="M247.804 48.8533H244.911V52.2892H247.804V48.8533Z" fill="#7D7E7F" />
         <path
           d="M39.3987 1.58098C18.7886 1.58098 2.1958 18.2542 2.1958 38.9641V48.8533H5.08884V37.8383C5.08884 19.2891 19.9501 4.35721 38.41 4.35721H211.59C230.05 4.35721 244.911 19.2891 244.911 37.8383V48.8533H247.804V38.9641C247.804 18.2542 231.211 1.58098 210.601 1.58098H39.3987Z"
           fill="#EBEBEB"
@@ -269,16 +246,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.269824"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.269824" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter1_f_21_274"
@@ -290,16 +259,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.269824"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.269824" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter2_f_21_274"
@@ -311,16 +272,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.269824"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.269824" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter3_f_21_274"
@@ -332,16 +285,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.269824"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.269824" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter4_f_21_274"
@@ -353,16 +298,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.266206"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.266206" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter5_f_21_274"
@@ -374,16 +311,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.117104"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.117104" result="effect1_foregroundBlur_21_274" />
         </filter>
         <filter
           id="filter6_f_21_274"
@@ -395,16 +324,8 @@ export function Smartphone({ src, ...svgProps }: SmartphoneProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="0.117104"
-            result="effect1_foregroundBlur_21_274"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="0.117104" result="effect1_foregroundBlur_21_274" />
         </filter>
         <linearGradient
           id="paint0_linear_21_274"

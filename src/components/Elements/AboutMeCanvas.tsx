@@ -1,7 +1,7 @@
 import { ColorThemeContext } from '@/providers';
-import { PerformanceMonitor, PerspectiveCamera } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import { RefObject, useContext, useLayoutEffect, useRef, useState } from 'react';
+import { Html, PerformanceMonitor, PerspectiveCamera, useProgress } from '@react-three/drei';
+import { Canvas, extend } from '@react-three/fiber';
+import { RefObject, Suspense, useContext, useLayoutEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { Me } from '@/components';
@@ -13,7 +13,7 @@ export function AboutMeCanvas() {
   const dirLight = useRef<THREE.DirectionalLight>(null);
   const [theme] = useContext(ColorThemeContext);
   const isScreenLg = useMinWidthMediaQuery('lg');
-  const [dpr, setDpr] = useState(window.devicePixelRatio);
+  const [dpr, setDpr] = useState(0.5 * window.devicePixelRatio);
 
   useLayoutEffect(() => {
     let shouldStop = false;
@@ -40,6 +40,7 @@ export function AboutMeCanvas() {
     <Canvas shadows dpr={dpr}>
       <PerformanceMonitor
         factor={0.5}
+        step={0.25}
         onChange={({ factor }) => setDpr(() => 0.5 + (window.devicePixelRatio - 0.5) * factor)}
       />
       <PerspectiveCamera
@@ -96,3 +97,12 @@ export function AboutMeCanvas() {
     </Canvas>
   );
 }
+
+// function Loader() {
+//   const { progress } = useProgress();
+//   return (
+//     <Html fullscreen className="">
+//       {progress} % loaded
+//     </Html>
+//   );
+// }

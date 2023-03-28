@@ -45,6 +45,7 @@ export function Navbar() {
             </HashLink>
           </div>
           <NavigationLinks
+            onClick={close}
             classNames={{
               list: 'flex justify-between items-center grow-[2]',
               link: 'pb-1.5 center-to-sides-border',
