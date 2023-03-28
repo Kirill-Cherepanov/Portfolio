@@ -7,7 +7,7 @@ import memeGeneratorMobileDemo from '@/assets/videos/Meme Generator DEMO MOBILE.
 import ticTacToeMobileDemo from '@/assets/videos/Tic-tac-toe DEMO MOBILE.mp4';
 import bloggyMobileDemo from '@/assets/videos/Bloggy DEMO MOBILE.mp4';
 
-export const BloggyInfo = (
+const BloggyInfo = (
   <div className="project-info">
     <p>
       <i>
@@ -74,7 +74,7 @@ export const BloggyInfo = (
   </div>
 );
 
-export const TicTacToeInfo = (
+const TicTacToeInfo = (
   <div className="project-info">
     <p>
       First of all, don&#39;t be deceived. While this project is based on tic-tac-toe which is a
@@ -119,6 +119,44 @@ export const TicTacToeInfo = (
       databases that do it automatically (most of the popular ones). But since I didn&#39;t really
       need a database in that project all that much, I opted against it, and instead decided to keep
       all the data in a variable.
+    </p>
+  </div>
+);
+
+const MemeGeneratorInfo = (
+  <div className="project-info">
+    <p>
+      The application uses the Imgflip API to fetch popular meme templates, or allows uploading a
+      client's image. After that, it employs the Canvas API to render an image. It stores
+      information on all the changes to the original template: positioning, font, color and other
+      settings for all the text boxes and filters applied to an image. After that using the Canvas
+      API it consumes all the data and applies the changes. There is a margin of error in rendering
+      since the Canvas API can't exactly use CSS data. There were major hurdles that I ran across
+      while making this project. More on that below.
+    </p>
+
+    <h4>About this project</h4>
+    <p>
+      The application uses the Imgflip API to fetch popular meme templates, or allows uploading a
+      client&#39;s image. After that, it employs the Canvas API to render an image. It stores
+      information on all the changes to the original template: positioning, font, color and other
+      settings for all the text boxes and filters applied to an image. After that using the Canvas
+      API it consumes all the data and applies the changes. There is a margin of error in rendering
+      since the Canvas API can&#39;t exactly use CSS data. There were major hurdles that I ran
+      across while making this project. More on that below.
+    </p>
+    <h4>Issues I&#39;ve run across</h4>
+    <p>
+      First and foremost, the Imgflip API is terrible. Initially I didn&#39;t intend to use the
+      Canvas API. I hoped that the Imgflip API could do all the rendering since it promises to be
+      able to do so. But the reality is that the API they provide for rendering is fatally imprecise
+      and the documentation is so lacking that it&#39;s almost nonexistent. I thought of abandoning
+      the project entirely but I just couldn&#39;t throw away everything that I had already done at
+      the time. Although at this point there is almost nothing left of what it was originally. Also
+      I should note that the Canvas API is quite quirky. I had to think of many workarounds to make
+      the rendered image at least similar to what it should be. And now that I think of it, it might
+      have been easier to just try taking a screenshot of an element on the page. I&#39;m sure
+      I&#39;ve seen a library for this.
     </p>
   </div>
 );
@@ -196,5 +234,6 @@ export const projects: ProjectType[] = [
       'Bootstrapped the application with an API for popular meme images.',
       'Designed an eye-pleasing user interface.',
     ],
+    essay: MemeGeneratorInfo,
   },
 ];

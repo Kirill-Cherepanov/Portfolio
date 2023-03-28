@@ -109,6 +109,9 @@
   .project-info a {
     @apply text-accent-300 hover:text-accent-500 active:text-accent-300;
   }
+  .project-info h4 {
+    @apply font-bold pt-1;
+  }
 
   .scroll-down-mouse {
     @apply relative w-5 h-[30px] border-2 border-main-0 dark:border-main-reverse-0 transition-colors duration-300 rounded-2xl;
