@@ -21,6 +21,7 @@ export function Projects() {
   const orbitControlsRef = useRef<OrbitControlsImpl>(null);
   const [cameraAngle, setCameraAngle] = useState(0);
   const [projectsAngles, setProjectsAngles] = useState<ProjectsAnglesType>([]);
+  const prevTouchPosition = useRef<number>();
 
   const projectIndex = projectsAngles.findIndex(({ vertices }) => {
     return isAngleInAngleSpan(vertices, cameraAngle);
@@ -59,7 +60,20 @@ export function Projects() {
 
       {/* Position of videos in ProjectTablet becomes very unstable if height is anything other than full screen... Why? */}
       <div className="h-full w-full">
-        <Canvas camera={{ fov: 77.5 * 0.9 }}>
+        <Canvas
+          camera={{ fov: 77.5 * 0.9 }}
+          onTouchStart={(e) => (prevTouchPosition.current = e.changedTouches[0].screenY)}
+          onTouchMove={(e) => {
+            if (prevTouchPosition.current) {
+              window.scrollBy({
+                top: prevTouchPosition.current - e.changedTouches[0].screenY,
+                behavior: 'instant' as ScrollBehavior,
+              });
+            }
+            prevTouchPosition.current = e.changedTouches[0].screenY;
+          }}
+          onTouchEnd={() => (prevTouchPosition.current = undefined)}
+        >
           <OrbitControls
             ref={orbitControlsRef}
             minPolarAngle={Math.PI / 2}
