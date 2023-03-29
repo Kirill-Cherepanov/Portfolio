@@ -25,7 +25,7 @@ export function Navbar() {
   const [isOnTop, setIsOnTop] = useState(true);
   useEffect(() => {
     const updatePosition = () => setIsOnTop(window.scrollY === 0);
-    window.addEventListener('scroll', updatePosition);
+    window.addEventListener('scroll', updatePosition, { passive: true });
     return () => window.removeEventListener('scroll', updatePosition);
   }, []);
 

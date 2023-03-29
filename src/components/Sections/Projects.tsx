@@ -21,7 +21,7 @@ export function Projects() {
   const orbitControlsRef = useRef<OrbitControlsImpl>(null);
   const [cameraAngle, setCameraAngle] = useState(0);
   const [projectsAngles, setProjectsAngles] = useState<ProjectsAnglesType>([]);
-  const prevTouchPosition = useRef<number>();
+  const prevTouchPosition = useRef<{ x: number; y: number }>();
 
   const projectIndex = projectsAngles.findIndex(({ vertices }) => {
     return isAngleInAngleSpan(vertices, cameraAngle);
@@ -62,15 +62,26 @@ export function Projects() {
       <div className="h-full w-full">
         <Canvas
           camera={{ fov: 77.5 * 0.9 }}
-          onTouchStart={(e) => (prevTouchPosition.current = e.changedTouches[0].screenY)}
+          onTouchStart={(e) =>
+            (prevTouchPosition.current = {
+              x: e.changedTouches[0].screenX,
+              y: e.changedTouches[0].screenY,
+            })
+          }
           onTouchMove={(e) => {
             if (prevTouchPosition.current) {
-              window.scrollBy({
-                top: prevTouchPosition.current - e.changedTouches[0].screenY,
-                behavior: 'instant' as ScrollBehavior,
-              });
+              const movedDist = {
+                x: prevTouchPosition.current.x - e.changedTouches[0].screenX,
+                y: prevTouchPosition.current.y - e.changedTouches[0].screenY,
+              };
+              if (Math.abs(movedDist.x) * 2 < Math.abs(movedDist.y)) {
+                window.scrollBy({ top: movedDist.y, behavior: 'instant' as ScrollBehavior });
+              }
             }
-            prevTouchPosition.current = e.changedTouches[0].screenY;
+            prevTouchPosition.current = {
+              x: e.changedTouches[0].screenX,
+              y: e.changedTouches[0].screenY,
+            };
           }}
           onTouchEnd={() => (prevTouchPosition.current = undefined)}
         >

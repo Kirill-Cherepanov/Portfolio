@@ -11,7 +11,7 @@ export function useScrollDirection(onChangeDirection?: (direction: number) => un
       prevScroll.current = window.scrollY;
       if (onChangeDirection) onChangeDirection(direction);
     };
-    window.addEventListener('scroll', checkDir);
+    window.addEventListener('scroll', checkDir, { passive: true });
 
     return () => window.removeEventListener('scroll', checkDir);
   }, []);
