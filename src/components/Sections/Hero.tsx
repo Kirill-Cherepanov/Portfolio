@@ -1,18 +1,27 @@
 import { HashLink } from 'react-router-hash-link';
 import Marquee from 'react-fast-marquee';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 
-import { Icon, ScrollDownTextCircle, HeroCanvas } from '@/components';
+import { Icon, ScrollDownTextCircle, HeroCanvas, Spinner } from '@/components';
 
 import diamond from '@/assets/images/diamond.png';
-import { Canvas } from '@react-three/fiber';
 
 export function Hero() {
   return (
     <section>
       <div className="mt-24 sm:mt-0 h-[400px] md:h-screen relative">
-        <Canvas camera={{ fov: 30 }} dpr={1} className="cursor-pointer">
-          <HeroCanvas />
-        </Canvas>
+        <Suspense
+          fallback={
+            <div className="mt-24 sm:mt-0 h-[400px] md:h-screen w-screen flex justify-center items-center">
+              <Spinner />
+            </div>
+          }
+        >
+          <Canvas camera={{ fov: 30 }} dpr={1} className="cursor-pointer">
+            <HeroCanvas />
+          </Canvas>
+        </Suspense>
         <div className="absolute left-4 bottom-4 lg:left-10 lg:bottom-10 flex items-center gap-4 group w-16 sm:w-20 lg:w-24">
           <Icon type="swipe" className="h-full w-full shrink-0" />
           <p className="sm:text-xl font-medium transition-opacity duration-300 opacity-0 group-hover:opacity-100 pointer-events-none shrink-0 w-80">

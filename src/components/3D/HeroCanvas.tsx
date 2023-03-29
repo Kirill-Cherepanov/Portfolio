@@ -1,10 +1,10 @@
-import { useState, useLayoutEffect, useRef, useContext, memo } from 'react';
-import { Html, OrbitControls, useTexture } from '@react-three/drei';
+import { useState, useLayoutEffect, useRef, useContext, memo, useEffect } from 'react';
+import { OrbitControls, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 import { ColorThemeContext } from '@/providers';
 import { useMinWidthMediaQuery } from '@/hooks';
-import { RotatingText, Spinner } from '@/components';
+import { RotatingText } from '@/components';
 
 const backgroundImages = {
   dark: new URL('../../assets/images/backgroundDark.webp', import.meta.url).toString(),
@@ -21,7 +21,8 @@ export function HeroCanvas() {
   const textures = useTexture(backgroundImages);
   const backgroundTexture = textures[theme];
 
-  useLayoutEffect(() => {
+  // useLayoutEffect doesn't work, because we need to update the textures only after they've been set. Doesn't make much sense to me either
+  useEffect(() => {
     textures.dark.needsUpdate = true;
     textures.light.needsUpdate = true;
   }, [textures.dark.source.data, textures.light.source.data]);
@@ -58,15 +59,6 @@ export function HeroCanvas() {
       >
         Cherepanov
       </RotatingText>
-
-      {!backgroundTexture.source.data && (
-        <Html
-          center
-          className="select-none mt-24 sm:mt-0 h-[400px] md:h-screen w-screen flex justify-center items-center"
-        >
-          <Spinner />
-        </Html>
-      )}
     </>
   );
 }

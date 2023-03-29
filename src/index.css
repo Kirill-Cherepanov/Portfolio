@@ -139,7 +139,7 @@
   }
 
   .spinner {
-    @apply animate-hueRotate transition-default relative w-[150px] h-[150px] border-[3px] border-main-reverse-2 dark:border-main-5 rounded-full text-center leading-[150px] text-xl font-bold tracking-widest text-accent-500 uppercase shadow-xl;
+    @apply select-none animate-hueRotate transition-default relative w-[150px] h-[150px] border-[3px] border-main-reverse-2 dark:border-main-5 rounded-full text-center leading-[150px] text-xl font-bold tracking-widest text-accent-500 uppercase shadow-xl;
     text-shadow: 0 0 10px var(--accent-color);
   }
   .spinner:before {
