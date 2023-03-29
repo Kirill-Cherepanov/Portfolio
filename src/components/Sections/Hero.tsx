@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section>
       <div className="mt-24 sm:mt-0 h-[400px] md:h-screen relative">
-        <Canvas camera={{ fov: 30 }} className="cursor-pointer">
+        <Canvas camera={{ fov: 30 }} dpr={1} className="cursor-pointer">
           <HeroCanvas />
         </Canvas>
         <div className="absolute left-4 bottom-4 lg:left-10 lg:bottom-10 flex items-center gap-4 group w-16 sm:w-20 lg:w-24">

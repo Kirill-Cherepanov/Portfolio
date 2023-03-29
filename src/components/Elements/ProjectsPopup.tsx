@@ -18,7 +18,7 @@ function ProjectsPopup_({ isOpen, close }: ProjectsPopupProps) {
   return (
     <div
       className={clsx(
-        'absolute h-full w-full top-0 l-0 bg-main-reverse-0 dark:bg-main-0 backdrop-blur-md z-[99999999] cursor-pointer bg-opacity-[85%] dark:bg-opacity-[85%] transition-opacity duration-300',
+        'absolute h-full w-full top-0 l-0 bg-main-reverse-0 dark:bg-main-0 z-[99999999] cursor-pointer bg-opacity-[95%] dark:bg-opacity-[95%] transition-opacity duration-300',
         isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
       )}
       {...events}
@@ -37,12 +37,6 @@ function ProjectsPopup_({ isOpen, close }: ProjectsPopupProps) {
           <Icon type="tap" className="h-14 w-14 xs:h-20 xs:w-20 shrink-0" />
           <span className="text-lg xs:text-xl font-medium">
             Click on a project tablet to learn more about the project
-          </span>
-        </div>
-        <div className="flex gap-2 items-center">
-          <Icon type="info" className="h-14 w-14 xs:h-20 xs:w-20 px-3 shrink-0" />
-          <span className="text-lg xs:text-xl font-medium">
-            Click on the info button to enable scroll on touchscreens
           </span>
         </div>
         <p className="mt-auto text-center italic text-lg tracking-wide animate-pulse">

@@ -10,19 +10,19 @@ export const SIZES = {
   '2xl': '1920px',
 };
 
-export const useMinWidthMediaQuery = (screen: keyof typeof SIZES) => {
-  const query = `(min-width: ${SIZES[screen]})`;
-  const checkMatch = () => window.matchMedia(query).matches;
-
-  const [matches, setMatches] = useState(checkMatch());
+export const useMinWidthMediaQuery = (screenSize: keyof typeof SIZES) => {
+  const query = `(min-width: ${SIZES[screenSize]})`;
+  const [matches, setMatches] = useState(checkMatch(query));
 
   useEffect(() => {
-    const listener = () => setMatches(checkMatch());
+    const listener = () => setMatches(checkMatch(query));
 
     listener();
     window.addEventListener('resize', listener);
     return () => window.removeEventListener('resize', listener);
-  }, [screen]);
+  }, [screenSize]);
 
   return matches;
 };
+
+const checkMatch = (query: string) => window.matchMedia(query).matches;

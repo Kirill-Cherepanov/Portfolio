@@ -24,7 +24,7 @@ export function HeroCanvas() {
   useLayoutEffect(() => {
     textures.dark.needsUpdate = true;
     textures.light.needsUpdate = true;
-  }, [textures.dark.version, textures.light.version]);
+  }, [textures.dark.source.data, textures.light.source.data]);
   useLayoutEffect(() => void sphereRef.current.scale(1, 1, -1), []);
 
   return (
