@@ -6,7 +6,7 @@
 
 **Deploy:** https://kirill-cherepanov.netlify.app/
 
-**Repository:** https://github.com/KissMyUSSR/Portfolio
+**Repository:** https://github.com/Kirill-Cherepanov/Portfolio
 
 ## What I've built and have learned
 

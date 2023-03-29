@@ -18,7 +18,7 @@ export function ContactLinks({ classNames }: ContactLinksProps) {
         </a>
       </li>
       <li className={classNames?.item}>
-        <a target="_blank" href="https://github.com/KissMyUSSR" className={classNames?.link}>
+        <a target="_blank" href="https://github.com/Kirill-Cherepanov" className={classNames?.link}>
           <Icon type="github" className={classNames?.icon} />
         </a>
       </li>

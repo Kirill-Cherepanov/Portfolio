@@ -89,7 +89,7 @@ const TicTacToeInfo = (
     </p>
     <p>
       At first it was just a single-player game that you can find{' '}
-      <a target="_blank" href="https://github.com/KissMyUSSR/tic-tac-toe-game">
+      <a target="_blank" href="https://github.com/Kirill-Cherepanov/tic-tac-toe-game">
         here
       </a>
       . Then, I decided that stopping would be pointless, so I added multiplayer as well as AI.
@@ -102,7 +102,7 @@ const TicTacToeInfo = (
       couldn&#39;t proceed without rewriting the whole codebase. So I gave up. I didn&#39;t upload
       the project at the time because it was incomplete, but decided to do it now anyway a couple
       months later. You can take a look at it{' '}
-      <a target="_blank" href="https://github.com/KissMyUSSR/tic-tac-toe-multiplayer">
+      <a target="_blank" href="https://github.com/Kirill-Cherepanov/tic-tac-toe-multiplayer">
         here
       </a>
       .
@@ -180,7 +180,7 @@ export const projects: ProjectType[] = [
     ],
     urls: {
       deploy: 'https://bloggy-kirill-cherepanov.netlify.app',
-      repo: 'https://github.com/KissMyUSSR/bloggy',
+      repo: 'https://github.com/Kirill-Cherepanov/bloggy',
     },
     demo: {
       mobile: bloggyMobileDemo,
@@ -202,7 +202,7 @@ export const projects: ProjectType[] = [
     technologies: ['React', 'Typescript', 'Node.js', 'Socket.io', 'Sass'],
     urls: {
       deploy: 'https://tic-tac-toe-kirill-cherepanov.netlify.app/',
-      repo: 'https://github.com/KissMyUSSR/tic-tac-toe-multiplayer-react',
+      repo: 'https://github.com/Kirill-Cherepanov/tic-tac-toe-multiplayer-react',
     },
     demo: {
       mobile: ticTacToeMobileDemo,
@@ -221,8 +221,8 @@ export const projects: ProjectType[] = [
     type: 'an Image Editor',
     technologies: ['React', 'Sass', 'Canvas API', 'Imgflip API'],
     urls: {
-      deploy: 'https://kissmyussr.github.io/meme-generator/',
-      repo: 'https://github.com/KissMyUSSR/meme-generator',
+      deploy: 'https://Kirill-Cherepanov.github.io/meme-generator/',
+      repo: 'https://github.com/Kirill-Cherepanov/meme-generator',
     },
     demo: {
       mobile: memeGeneratorMobileDemo,

@@ -8,7 +8,7 @@
 
 **Deploy:** https://bloggy-kirill-cherepanov.netlify.appyarn
 
-**Repository:** https://github.com/KissMyUSSR/bloggy
+**Repository:** https://github.com/Kirill-Cherepanov/bloggy
 
 ### What I've built and have learned
 
@@ -50,7 +50,7 @@ I also added a notification feature to notify users of errors and whatever else,
 
 **Deploy:** https://tic-tac-toe-kirill-cherepanov.netlify.app/
 
-**Repository:** https://github.com/KissMyUSSR/tic-tac-toe-multiplayer-react
+**Repository:** https://github.com/Kirill-Cherepanov/tic-tac-toe-multiplayer-react
 
 ### What I've built and have learned
 
@@ -65,9 +65,9 @@ First of all, don't be deceived. While this project is based on tic-tac-toe whic
 
 I began this project in the spring of 2022. At the time I didn't yet know React and didn't consider learning it for this project. So everything was written in vanilla TypeScript.
 
-At first it was just a single-player game that you can find [here](https://github.com/KissMyUSSR/tic-tac-toe-game). Then, I decided that stopping would be pointless, so I added multiplayer as well as AI.
+At first it was just a single-player game that you can find [here](https://github.com/Kirill-Cherepanov/tic-tac-toe-game). Then, I decided that stopping would be pointless, so I added multiplayer as well as AI.
 
-I didn't know much about the back-end and didn't even know what I needed to complete the project. Having improvised on the go, I built much of what I have at this point, except for the timer, search with settings and AI. But my code became very convoluted and I had a lot of vulnerabilities on the back-end - anyone could easily cheat and even crush the server. So I couldn't proceed without rewriting the whole codebase. So I gave up. I didn't upload the project at the time because it was incomplete, but decided to do it now anyway a couple months later. You can take a look at it [here](https://github.com/KissMyUSSR/tic-tac-toe-multiplayer).
+I didn't know much about the back-end and didn't even know what I needed to complete the project. Having improvised on the go, I built much of what I have at this point, except for the timer, search with settings and AI. But my code became very convoluted and I had a lot of vulnerabilities on the back-end - anyone could easily cheat and even crush the server. So I couldn't proceed without rewriting the whole codebase. So I gave up. I didn't upload the project at the time because it was incomplete, but decided to do it now anyway a couple months later. You can take a look at it [here](https://github.com/Kirill-Cherepanov/tic-tac-toe-multiplayer).
 
 And I rewrote everything from scratch, making the code much more maintainable and scalable. I used React for it and decided to stick with the same stack on the back-end (though I had to rewrite it anyways to keep up with the changes on the front-end).
 
@@ -81,9 +81,9 @@ Initially I had a database in the form of a JSON file. But soon realized that th
 
 **Technologies used:** React, Sass, Canvas API, Imgflip API
 
-**Deploy:** https://kissmyussr.github.io/meme-generator/
+**Deploy:** https://Kirill-Cherepanov.github.io/meme-generator/
 
-**Repository:** https://github.com/KissMyUSSR/meme-generator
+**Repository:** https://github.com/Kirill-Cherepanov/meme-generator
 
 ### What I've built and have learned
 
@@ -121,7 +121,7 @@ Also I should note that the Canvas API is quite quirky. I had to think of many w
 
 **Deploy:** https://kirill-cherepanov.netlify.app/
 
-**Repository:** https://github.com/KissMyUSSR/Portfolio
+**Repository:** https://github.com/Kirill-Cherepanov/Portfolio
 
 ### What I've built and have learned
 
