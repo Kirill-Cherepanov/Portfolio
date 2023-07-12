@@ -11,6 +11,7 @@ const skillCategories = {
       'Javascript',
       'Typescript',
       'React',
+      'Next.js',
       'Node.js',
       'Express',
       'Mongodb',
@@ -18,6 +19,7 @@ const skillCategories = {
       'CSS3',
       'sass',
       'tailwind',
+      'MUI',
     ],
   },
   secondary: {

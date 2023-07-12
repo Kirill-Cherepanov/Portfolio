@@ -6,7 +6,7 @@
 
 **Technologies used:** React, Typescript, Node.js, Express, MongoDB + Mongoose, Tailwind, Redux, RTK Query, Cypress, JWT, Docker
 
-**Deploy:** https://bloggy-kirill-cherepanov.netlify.appyarn
+**Deploy:** https://bloggy-kirill-cherepanov.netlify.app/
 
 **Repository:** https://github.com/Kirill-Cherepanov/bloggy
 
@@ -18,6 +18,16 @@
 - Set up a secure authentification/authorization process that was enabled by using dual JWT tokens and email verification.
 - Added surface-level end-to-end tests with Cypress.
 - Deployed the API on fly.io with Docker.
+  Bloggy - a Blog/Social media Application
+  • Developed a Social media app that is focused on postingy
+  • Adopted an exceedingly scalable feature-based architecture for the
+  front-end and a simplified Clean architecture on the back-endy
+  • Designed a highly intuitive and responsive user interface that
+  enables most pleasant user experiencey
+  • Set up a secure authentication/authorization process that was
+  enabled by using dual JWT tokens and email verificationy
+  • Added surface-level end-to-end tests with Cypressy
+  • Deployed the API on fly.io with Docker.
 
 ### My general thoughts
 

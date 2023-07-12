@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 vite.config.ts.*.mfj
+vite.config.ts.*.mjs
