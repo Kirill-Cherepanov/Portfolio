@@ -23,8 +23,12 @@ export function ContactLinks({ classNames }: ContactLinksProps) {
         </a>
       </li>
       <li className={classNames?.item}>
-        <a target="_blank" href="https://vk.com/kcherepanov1/" className={classNames?.link}>
-          <Icon type="vk" className={classNames?.icon} />
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/kirill-cherepanov/"
+          className={classNames?.link}
+        >
+          <Icon type="linkedin" className={classNames?.icon} />
         </a>
       </li>
       <li className={classNames?.item}>
